@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ENTION WORKBOOK SERIES E5</title>
+  <style>
+    html, body {
+      overflow-x: hidden;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #133B5C, #0FAFCA, #007e9e);
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 48px auto 48px 0px;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      gap: 56px;
+      align-items: stretch;
+      position: relative;
+      min-height: 600px;
+    }
+
+    .left {
+      flex: 0 0 52%;
+      max-width: 52%;
+      min-width: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-right: 0;
+      position: relative;
+      z-index: 2;
+      justify-content: center;
+    }
+
+    .left-column {
+      align-self: flex-start;
+      margin-top: -40px;
+    }
+
+    .divider {
+      width: 2px;
+      background: rgba(255,255,255,0.18);
+      height: 80%;
+      align-self: center;
+      margin: 0 32px;
+      border-radius: 1px;
+    }
+
+    .right {
+      flex: 0 0 48%;
+      max-width: 48%;
+      min-width: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      z-index: 2;
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-radius: 0;
+      padding: 40px 40px 32px 40px;
+    }
+
+    /* Product Carousel Styles */
+    .product-carousel {
+      position: relative;
+      max-width: 500px;
+      margin: 0;
+    }
+
+    .main-image-container {
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 40px 0 rgba(0,0,0,0.22), 0 0 0 12px rgba(15,175,202,0.08);
+      background: rgba(20, 30, 50, 0.45);
+      margin-bottom: 18px;
+      border-radius: 18px;
+      transition: box-shadow 0.3s;
+      width: 95%;
+      min-width: 420px;
+      max-width: 650px;
+      margin-left: 0;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s cubic-bezier(.4,2,.6,1);
+    }
+    .main-image-container:hover .main-image {
+      transform: scale(1.06);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.32);
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      padding: 15px 12px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-nav:hover {
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .carousel-nav.prev {
+      left: 10px;
+    }
+
+    .carousel-nav.next {
+      right: 10px;
+    }
+
+    .thumbnail-container {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 0;
+      width: 100%;
+      scrollbar-width: thin;
+    }
+    .thumbnail {
+      width: 48px;
+      height: 36px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+      opacity: 0.7;
+      background: #222;
+      border-radius: 0;
+      flex: 0 0 auto;
+    }
+    .thumbnail.active {
+      border-color: #00ffae;
+      opacity: 1;
+      box-shadow: 0 2px 8px rgba(0,255,174,0.12);
+    }
+    .thumbnail:hover {
+      opacity: 1;
+      transform: scale(1.07);
+    }
+
+    .image-counter {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .features {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      background: transparent;
+    }
+
+    .features span {
+      background: rgba(0, 175, 202, 0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(0,175,202,0.25);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      color: #fff;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 16px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .customize {
+      margin-top: 20px;
+    }
+
+    .customize h3 {
+      margin-bottom: 10px;
+    }
+
+    .options {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .option-box {
+      background: #1e1e3f;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .option-box:hover {
+      background: #3f3f8f;
+    }
+
+    .warranty, .price-section {
+      margin-top: 20px;
+    }
+
+    .offer-price {
+      font-size: 24px;
+      color: #00ffae;
+      font-weight: bold;
+    }
+
+    .mrp {
+      text-decoration: line-through;
+      color: #bbb;
+      margin-left: 10px;
+    }
+
+    .cta {
+      margin-top: 20px;
+    }
+
+    .cta button {
+      background: #0FAFCA;
+      color: #fff;
+      padding: 14px 32px;
+      font-size: 18px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+
+    .cta button:hover {
+      background: #007e9e;
+      color: #fff;
+    }
+
+    .included {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      color: #fff;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 0;
+      font-size: 1rem;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 1100px) {
+      .container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px 0 24px 0;
+        min-height: unset;
+        margin-left: 0;
+      }
+      .left, .right {
+        flex: 1 1 100%;
+        max-width: 100%;
+        align-items: stretch;
+        padding-right: 0;
+        margin-left: 0;
+      }
+      .right {
+        margin-top: 32px;
+      }
+      .divider {
+        display: none;
+      }
+    }
+
+    .card {
+      background: rgba(20, 30, 50, 0.55);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      border-radius: 24px;
+      padding: 40px 40px 32px 40px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .card h1 {
+      width: auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tech-specs-section {
+      margin: 48px auto 32px auto;
+      max-width: 98vw;
+      width: 1200px;
+      padding: 0 16px;
+    }
+    .tech-specs-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: #fff;
+      font-family: inherit;
+    }
+    .tech-specs-table-wrapper {
+      border-radius: 18px;
+      border: none;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.10);
+      padding: 24px 12px 12px 12px;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .tech-specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: none;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .tech-specs-table td {
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 10px 14px;
+      background: transparent;
+      font-family: inherit;
+      color: #fff;
+    }
+    .tech-specs-table tr td:first-child,
+    .tech-specs-table tr td:nth-child(3) {
+      font-weight: 700;
+      color: #fff;
+      background: none;
+      width: 180px;
+    }
+    @media (max-width: 900px) {
+      .tech-specs-section {
+        width: 100vw;
+        padding: 0 2vw;
+      }
+      .tech-specs-title {
+        font-size: 1.3rem;
+      }
+      .tech-specs-table-wrapper {
+        padding: 4px;
+      }
+      .tech-specs-table td {
+        padding: 6px 4px;
+        font-size: 0.95rem;
+      }
+    }
+
+    .features-design-section {
+      width: 100%;
+      max-width: 1200px;
+      margin: 24px auto 0 auto;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .features-design-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 32px;
+      color: #fff;
+      font-family: inherit;
+    }
+    .features-design-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto auto auto auto;
+      gap: 24px;
+    }
+    .fd-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+    .fd-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+    .fd-caption {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 8px;
+      color: #fff;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .fd-caption1 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-top: 16px;
+      color: #b3e0ff;
+      text-shadow: 0 2px 12px #000, 0 0 8px #0FAFCA;
+    }
+    .fd-caption2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      text-align: right;
+      margin-top: 8px;
+    }
+    .fd-caption3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      text-align: left;
+      margin-top: 8px;
+    }
+    .fd-text {
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+    .fd-center {
+      text-align: center;
+    }
+    .fd-block-wide {
+      grid-column: 1 / span 2;
+    }
+    @media (max-width: 900px) {
+      .features-design-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .fd-block-wide {
+        grid-column: 1 / span 1;
+      }
+    }
+    .fd-row1 {
+      display: flex;
+      flex-direction: row;
+      background: #18408b;
+      border-radius: 0;
+      margin-bottom: 32px;
+      padding: 0;
+      box-shadow: none;
+    }
+    .fd-row1-text {
+      flex: 1 1 0;
+      color: #fff;
+      font-size: 1.35rem;
+      padding: 36px 32px;
+      border-radius: 0;
+      font-family: inherit;
+      font-weight: 400;
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: none;
+    }
+    .fd-row1-img {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+    }
+    .fd-row1-img img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      border-radius: 0;
+    }
+    @media (max-width: 900px) {
+      .fd-row1 {
+        flex-direction: column;
+        gap: 0;
+      }
+      .fd-row1-img img {
+        max-width: 100vw;
+      }
+      .fd-row1-text {
+        font-size: 1.1rem;
+        padding: 18px 10px;
+      }
+    }
+
+    .fd-row1-nocard {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      margin-bottom: 32px;
+      align-items: center;
+      height: auto;
+    }
+    .fd-row1-textcard {
+      flex: 1 1 0;
+      background: #18408b;
+      color: #fff;
+      font-size: 1.35rem;
+      padding: 8px 32px;
+      border-radius: 0;
+      font-family: inherit;
+      font-weight: 400;
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      margin: 0;
+      align-self: center;
+    }
+    .fd-row1-img {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      height: 100%;
+      margin: 0;
+    }
+    .fd-row1-img img {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 0;
+    }
+    @media (max-width: 900px) {
+      .fd-row1-nocard {
+        flex-direction: column;
+        gap: 0;
+      }
+      .fd-row1-img img {
+        max-width: 100vw;
+      }
+      .fd-row1-textcard {
+        font-size: 1.1rem;
+        padding: 18px 10px;
+      }
+    }
+
+    .fd-block3 img {
+      width: 106%;
+      max-width: none;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transform: translateY(-150px);
+    }
+
+    .fd-block4 {
+      background: #18408b;
+      color: #fff;
+      font-size: 1.35rem;
+      padding: 8px 32px 10px 32px;
+      border-radius: 0;
+      font-family: inherit;
+      font-weight: 400;
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0;
+      margin-top: -12px;
+      height: 75%;
+    }
+
+    .fd-block-images-container {
+      grid-column: span 2;
+      background: #18408b;
+      border-radius: 0;
+      padding: 0 24px 0 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: stretch;
+      gap: 32px;
+      min-height: 420px;
+      height: 420px;
+      position: relative;
+    }
+    .fd-block6, .fd-block7 {
+      flex: 0 0 40%;
+      max-width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .fd-block6 img, .fd-block7 img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-left: 0;
+    }
+
+    .fd-block fd-block-rowcard {
+      display: flex;
+      gap: 0;
+      margin-bottom: 32px;
+      height: 320px;
+      background: linear-gradient(135deg, #0a1836 60%, #1a2c5c 100%);
+      border-radius: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .fd-block fd-block-rowcard div {
+      flex: 0 0 50%;
+      max-width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 36px 24px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 400;
+      text-align: left;
+    }
+    .fd-block fd-block-rowcard div:last-child {
+      flex: 1 1 50%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      overflow: hidden;
+    }
+    .fd-block fd-block-rowcard div:last-child img {
+      height: 100%;
+      width: auto;
+      border-radius: 0;
+      display: block;
+      object-fit: cover;
+    }
+
+    .custom-rowcard-matched {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      min-height: 340px;
+      background: none;
+      border-radius: 0;
+      margin: 32px 0 0 0;
+      box-shadow: none;
+      overflow: hidden;
+    }
+    .custom-rowcard-matched-text {
+      background: #18408b;
+      color: #fff;
+      flex: 1 1 0;
+      padding: 36px 32px;
+      font-size: 1.25rem;
+      font-family: inherit;
+      font-weight: 400;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 0;
+      min-width: 0;
+    }
+    .custom-rowcard-matched-img-bg {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(120deg, #0a1836 60%, #1a2c5c 100%);
+      border-radius: 0;
+      min-width: 0;
+      height: 100%;
+      padding: 0;
+    }
+    .custom-rowcard-matched-img {
+      max-width: 90%;
+      max-height: 320px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    }
+    @media (max-width: 1100px) {
+      .custom-rowcard-matched {
+        flex-direction: column;
+        min-height: unset;
+      }
+      .custom-rowcard-matched-text, .custom-rowcard-matched-img-bg {
+        width: 100%;
+        min-width: 0;
+        border-radius: 0;
+      }
+      .custom-rowcard-matched-img {
+        max-width: 100%;
+        max-height: 220px;
+      }
+    }
+
+    .swipe-card-row {
+      min-height: 480px;
+      height: 480px;
+      align-items: stretch;
+      display: flex;
+    }
+    .swipe-card-text {
+      height: 100%;
+      min-height: unset;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .swipe-card-img {
+      height: 100%;
+      min-height: unset;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    .swipe-card-img img {
+      height: 100%;
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+      margin: 0;
+    }
+    @media (max-width: 900px) {
+      .swipe-card-row {
+        min-height: unset;
+        height: unset;
+        flex-direction: column;
+      }
+      .swipe-card-text, .swipe-card-img {
+        height: unset;
+      }
+      .swipe-card-img img {
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .battery-card-row {
+      background: #18306b;
+      margin-top: 12px;
+      min-height: 180px;
+      align-items: center;
+    }
+
+    .fd-row1-nocard fd-block-wide audio-card-row {
+      background: linear-gradient(120deg, #0a1836 60%, #1a2c5c 100%);
+      margin-top:32px;
+      min-height:340px;
+      display:flex;
+      align-items:center;
+      overflow:visible;
+      position:relative;
+    }
+    .audio-card-img {
+      flex:0 0 54%;
+      position:relative;
+      left:-80px;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      overflow:visible;
+    }
+    .audio-card-img img {
+      height:340px;
+      width:auto;
+      max-width:none;
+      object-fit:contain;
+      box-shadow:0 8px 32px 0 rgba(31,38,135,0.18);
+    }
+    .audio-card-text {
+      flex:1;
+      color:#fff;
+      font-size:2rem;
+      font-weight:400;
+      text-align:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      height:100%;
+      padding:0 32px;
+    }
+    .audio-card-text span {
+      display:block;
+    }
+
+    .compliance-section {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 32px 0 24px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: none;
+    }
+    .compliance-section h2 {
+      color:#fff;
+      font-size:2.8rem;
+      font-weight:400;
+      text-align:center;
+      margin-bottom:24px;
+    }
+    .compliance-section div {
+      color:#fff;
+      font-size:1.6rem;
+      font-weight:400;
+      text-align:center;
+      max-width:1200px;
+      margin:0 auto;
+      line-height:1.25;
+    }
+
+    .glassmorphic-container {
+      background: rgba(255,255,255,0.13);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 36px 48px 32px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .glassmorphic-container h2 {
+      color: #fff;
+      font-size: 2.8rem;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .glassmorphic-container div {
+      color: #fff;
+      font-size: 1.6rem;
+      font-weight: 400;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.25;
+    }
+
+    .card-behind-text {
+      background: #18408b;
+      border-radius: 0;
+      padding: 64px 24px 80px 24px;
+      color: #fff;
+      box-shadow: 0 12px 40px 0 rgba(31,38,135,0.22);
+      display: block;
+      margin: -170px auto 0 auto;
+      max-width: 1200px;
+      width: 96%;
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="left">
+      <div class="product-carousel">
+        <div class="main-image-container">
+          <img src="E1/unsplash_LlVwrX92xIQ.png" alt="ENTION Laptop" class="main-image" id="mainImage">
+          <button class="carousel-nav prev" onclick="changeImage(-1)">‹</button>
+          <button class="carousel-nav next" onclick="changeImage(1)">›</button>
+          <div class="image-counter" id="imageCounter">1 / 6</div>
+        </div>
+        
+        <div class="thumbnail-container">
+          <img src="E1/unsplash_LlVwrX92xIQ.png" alt="Laptop Main View" class="thumbnail active" onclick="setImage(0)">
+          <img src="E1/pc-girl.png" alt="Laptop with User" class="thumbnail" onclick="setImage(1)">
+          <img src="E1/light-pc.jpg" alt="Laptop Light View" class="thumbnail" onclick="setImage(2)">
+          <img src="E1/win11.png" alt="Windows 11" class="thumbnail" onclick="setImage(3)">
+          <img src="E1/intel.png" alt="Intel Processor" class="thumbnail" onclick="setImage(4)">
+          <img src="E1/full-hd.png" alt="Full HD Display" class="thumbnail" onclick="setImage(5)">
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="right">
+      <h1>ENTION WORKBOOK SERIES E5</h1>
+
+      <div class="features">
+        <span>Made for Everyday Achievers</span>
+        <span>High Performance, Budget Friendly</span>
+        <span>Full Control at Your Fingertips</span>
+      </div>
+
+      <div class="customize">
+        <h3>Customize Your Laptop</h3>
+        <div><strong>RAM:</strong></div>
+        <div class="options">
+          <div class="option-box">8GB</div>
+          <div class="option-box">16GB</div>
+        </div>
+
+        <div style="margin-top: 10px;"><strong>SSD:</strong></div>
+        <div class="options">
+          <div class="option-box">512GB</div>
+          <div class="option-box">1TB</div>
+        </div>
+      </div>
+
+      <div class="warranty">
+        <h3>Warranty Options</h3>
+        <div class="options">
+          <div class="option-box">18 Months (Default)</div>
+          <div class="option-box">+6 Months</div>
+          <div class="option-box">+1 Year</div>
+        </div>
+      </div>
+
+      <div class="price-section">
+        <div class="offer-price">₹28,000 <span class="mrp">₹35,000</span></div>
+      </div>
+
+      <div class="cta">
+        <button>Buy Now</button>
+      </div>
+
+      <div class="included">
+        Included: Windows 11 Pro, Office 365, Laptop Bag Pack
+      </div>
+    </div>
+  </div>
+
+  <section class="tech-specs-section">
+    <h2 class="tech-specs-title">Technical Specifications</h2>
+    <div class="tech-specs-table-wrapper">
+      <table class="tech-specs-table">
+        <tr>
+          <td><strong>Colour</strong></td><td>sliver</td>
+          <td><strong>Power</strong></td><td>DC 12V</td>
+        </tr>
+        <tr>
+          <td><strong>Display</strong></td><td>15.6inch, Full HD 1920*1080 IPS 16:9 ratio</td>
+          <td><strong>Battery</strong></td><td>5000mah</td>
+        </tr>
+        <tr>
+          <td><strong>Processor</strong></td><td>intel N95 up to 3.4GHz with Turbo boost</td>
+          <td><strong>RJ45</strong></td><td>yes</td>
+        </tr>
+        <tr>
+          <td><strong>Core, threads, Cache</strong></td><td>4core, 4 threads, 6MB cache</td>
+          <td><strong>Memory card reader</strong></td><td>yes, SD card upto 128Gb</td>
+        </tr>
+        <tr>
+          <td><strong>Graphic</strong></td><td>intel UHD graphics 1.20Ghz</td>
+          <td><strong>Earphone port</strong></td><td>3.5mm standard headphone jack</td>
+        </tr>
+        <tr>
+          <td><strong>Fingerprint reader</strong></td><td>yes, on touch pad</td>
+          <td><strong>Mic</strong></td><td>Built in Analog microphone</td>
+        </tr>
+        <tr>
+          <td><strong>Operating system</strong></td><td>window 11</td>
+          <td><strong>Speaker</strong></td><td>front facing Built in stereo speaker 1.0W*2</td>
+        </tr>
+        <tr>
+          <td><strong>MS office</strong></td><td>yes, 365</td>
+          <td><strong>Webcam</strong></td><td>2.0Mega+DMIC, with Privcay sutter</td>
+        </tr>
+        <tr>
+          <td><strong>USB</strong></td><td>3 port of USB 3.0, type C(Data+DP)</td>
+          <td><strong>Touchpad</strong></td><td>Yes, extra large</td>
+        </tr>
+        <tr>
+          <td><strong>HDMI</strong></td><td>HDMI A type</td>
+          <td><strong>Keyboard</strong></td><td>US, Round with Backlight & Square with Backlight</td>
+        </tr>
+        <tr>
+          <td><strong>Product Dimension and weight</strong></td><td>357.4*228*19 mm, 1.68kg</td>
+          <td><strong>Included in Box</strong></td><td>Laptop, Power Cord, Adapter, User Manual</td>
+        </tr>
+        <tr>
+          <td><strong>Covered in warranty</strong></td><td>Manufacturing Defects, Physical Damage not covered.</td>
+          <td><strong>Manufactured by</strong></td><td>Ention, Made in India.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="features-design-section">
+    <h2 class="features-design-title">Features & Design</h2>
+    <div class="fd-row1-nocard">
+      <div class="fd-row1-textcard">
+        <p>Experience high-quality computing without compromise. The Ention Workbook Series Laptop blends power, design, and affordability to deliver outstanding performance on a smart budget.</p>
+        <p>Powered by the Intel N95 processor with a maximum turbo frequency of up to 3.4GHz and 6MB cache, it's built to keep up with your everyday tasks seamlessly.</p>
+      </div>
+      <div class="fd-row1-img">
+        <img src="/drive-download-20250705T140201Z-1-001/1.png" alt="Your Working Companion" />
+      </div>
+    </div>
+    <div class="features-design-grid">
+      <div class="fd-block fd-block3">
+        <img src="/drive-download-20250705T140201Z-1-001/Copy of Copy of 28,000 (1).png" alt="Swipe to Adjust Volume Brightness" />
+      </div>
+      <div class="fd-block fd-block4">
+        <div class="fd-text">
+          <b>Control at Your Fingertips</b><br>
+          Experience a smarter way to interact with your device. Easily manage volume and brightness with intuitive finger gestures—no buttons, no hassle.
+        </div>
+      </div>
+      <div class="fd-block fd-block8 fd-block-wide">
+        <div class="fd-text fd-center card-behind-text">
+          <b>Made for Power Users & Everyday Hustlers</b><br>
+          A compact companion that blends performance with mobility, ideal for students and professionals on the go.
+        </div>
+      </div>
+      <div class="fd-block-images-container" style="grid-column: span 2; background: #18408b; border-radius: 0; padding: 0 24px 0 0; display: flex; justify-content: flex-start; align-items: stretch; gap: 32px; min-height: 420px; height: 420px; position: relative;">
+        <div class="fd-block fd-block6" style="margin: 0; background: none; box-shadow: none; flex: 0 0 60%; max-width: 60%; display: flex; align-items: stretch; justify-content: flex-start; padding-left: 0; height: 100%; z-index: 1;">
+          <img src="/drive-download-20250705T140201Z-1-001/copy uncut (4).png" alt="Laptop Open" style="width: 100%; height: 100%; display: block; margin: 0; padding: 0; object-fit: cover;" />
+        </div>
+        <img src="/drive-download-20250705T140201Z-1-001/Copy of Copy of 28,000 (2).png" alt="Camera Privacy Shutter" style="position: absolute; top: 0; right: 0; bottom: auto; left: auto; width: auto; max-height: 60%; height: auto; z-index: 2; display: block; object-fit: none; background: #18408b;" />
+        <div style="position: absolute; top: calc(60% + 16px); right: 100px; max-width: 38%; color: #fff; font-size: 1.15rem; text-align: right; padding: 0; z-index: 3; line-height: 1.7;">
+          Enjoy smooth performance at<br>
+          an affordable price, making<br>
+          high-quality computing<br>
+          accessible to everyone.
+        </div>
+      </div>
+      <div class="fd-block fd-block9 fd-block-wide">
+        <img src="/drive-download-20250705T140201Z-1-001/copy uncut (5).png" alt="Ports and Slots" />
+      </div>
+      
+    </div>
+    <div class="fd-row1-nocard fd-block-wide swipe-card-row" style="margin-top:32px;">
+      <div class="fd-row1-textcard swipe-card-text" style="text-align:center; justify-content:center;">
+        <div style="font-size:2.4rem; font-weight:400; margin-bottom:32px;">Window 11 Pro</div>
+        <div style="font-size:2.4rem; font-weight:400; margin-bottom:32px;">Do the Great thingh</div>
+        <div style="font-size:2.1rem; font-weight:400; margin-top:32px;">5000Mah<br>Longer<br>Battery</div>
+      </div>
+      <div class="fd-row1-img swipe-card-img">
+        <img src="/drive-download-20250705T140201Z-1-001/Copy of Copy of 28,000 (1).png" alt="Swipe to Adjust Volume Brightness" />
+      </div>
+    </div>
+    <div class="fd-row1-nocard fd-block-wide audio-card-row" style="background: linear-gradient(120deg, #0a1836 60%, #1a2c5c 100%); margin-top:32px; min-height:340px; display:flex; align-items:center; overflow:visible; position:relative;">
+      <div class="audio-card-img" style="flex:0 0 54%; position:relative; left:-80px; z-index:2; display:flex; align-items:center; justify-content:flex-end; overflow:visible;">
+        <img src="/drive-download-20250705T140201Z-1-001/copy uncut (4).png" alt="Laptop Audio" style="height:340px; width:auto; max-width:none; object-fit:contain; box-shadow:0 8px 32px 0 rgba(31,38,135,0.18);" />
+      </div>
+      <div class="audio-card-text" style="flex:1; color:#fff; font-size:2rem; font-weight:400; text-align:center; display:flex; align-items:center; justify-content:center; height:100%; padding:0 32px;">
+        <span style="display:block;">Immersive Audio with Front-Facing Speakers<br>Experience crystal–clear sound that's directed towards you — not away.</span>
+      </div>
+    </div>
+
+    <section class="compliance-section">
+      <div class="glassmorphic-container">
+        <h2>Product compliance certification</h2>
+        <div>
+          Ention ensures all its products comply with Indian regulatory standards. Devices are certified under BIS CRS for electrical safety and WPC–ETA for wireless communication compliance. Ention also follows global benchmarks for product safety, electromagnetic compatibility, ergonomics, and environmental responsibility. Every product is developed through certified processes to guarantee quality, legal distribution, and user safety.
+        </div>
+      </div>
+    </section>
+
+  </section>
+
+  <script>
+    const images = [
+      'E1/unsplash_LlVwrX92xIQ.png',
+      'E1/pc-girl.png',
+      'E1/light-pc.jpg',
+      'E1/win11.png',
+      'E1/intel.png',
+      'E1/full-hd.png'
+    ];
+    
+    let currentImageIndex = 0;
+    const mainImage = document.getElementById('mainImage');
+    const imageCounter = document.getElementById('imageCounter');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+
+    function updateImage() {
+      mainImage.src = images[currentImageIndex];
+      imageCounter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+      
+      // Update thumbnail active state
+      thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+      });
+    }
+
+    function changeImage(direction) {
+      currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+      updateImage();
+    }
+
+    function setImage(index) {
+      currentImageIndex = index;
+      updateImage();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') {
+        changeImage(-1);
+      } else if (e.key === 'ArrowRight') {
+        changeImage(1);
+      }
+    });
+
+    // Auto-advance carousel every 5 seconds
+    setInterval(() => {
+      changeImage(1);
+    }, 5000);
+  </script>
+
+</body>
+</html>
